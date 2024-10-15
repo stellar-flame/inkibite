@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://2aeplxg3urbp"]
+
+[ext_resource type="Texture2D" uid="uid://b060gyc6sxfhi" path="res://assets/drutt/DruttBuzzing.png" id="1_cciny"]
+[ext_resource type="Script" path="res://characters/drutt/Drutt.gd" id="1_qrva4"]
+[ext_resource type="Texture2D" uid="uid://d04avmcyejphf" path="res://assets/drutt/DruttBurp.png" id="2_73q2g"]
+[ext_resource type="Texture2D" uid="uid://dowm3tsiweig4" path="res://assets/drutt/Drutt.png" id="2_d73nx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yexg"]
+radius = 72.0
+height = 144.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sm12"]
+atlas = ExtResource("2_73q2g")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlrtc"]
+atlas = ExtResource("2_73q2g")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1grr5"]
+atlas = ExtResource("2_73q2g")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we4bs"]
+atlas = ExtResource("1_cciny")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsgsq"]
+atlas = ExtResource("1_cciny")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs5sw"]
+atlas = ExtResource("1_cciny")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7kxg"]
+atlas = ExtResource("1_cciny")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdsvp"]
+atlas = ExtResource("1_cciny")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp1d2"]
+atlas = ExtResource("1_cciny")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4mal"]
+atlas = ExtResource("2_d73nx")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcnc6"]
+atlas = ExtResource("2_d73nx")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a5b7"]
+atlas = ExtResource("2_d73nx")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uut4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sm12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlrtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1grr5")
+}],
+"loop": false,
+"name": &"burp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we4bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsgsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs5sw")
+}],
+"loop": true,
+"name": &"buzzing",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7kxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdsvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp1d2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4mal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcnc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a5b7")
+}],
+"loop": true,
+"name": &"walking_forward",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r63v4"]
+radius = 158.474
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3mj1"]
+radius = 91.6665
+height = 183.333
+
+[node name="Drutt" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+script = ExtResource("1_qrva4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0yexg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uut4c")
+animation = &"burp"
+
+[node name="WormEatingTimer" type="Timer" parent="."]
+
+[node name="WormRadar" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormRadar"]
+position = Vector2(-6.66667, 20)
+shape = SubResource("CircleShape2D_r63v4")
+
+[node name="Eat" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eat"]
+position = Vector2(-6.66667, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s3mj1")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="WormEatingTimer" to="." method="_on_worm_eating_timer_timeout"]
+[connection signal="body_entered" from="WormRadar" to="." method="_on_worm_radar_body_entered"]
+[connection signal="body_exited" from="WormRadar" to="." method="_on_worm_radar_body_exited"]
+[connection signal="body_entered" from="Eat" to="." method="_on_eat_body_entered"]

@@ -1,0 +1,244 @@
+[gd_scene load_steps=20 format=3 uid="uid://iyr6hrfeko12"]
+
+[ext_resource type="Script" path="res://characters/krub/Krub.gd" id="1_6dud4"]
+[ext_resource type="Animation" uid="uid://cb1nb76gkwaid" path="res://animations/burke-idle.res" id="2_6erfq"]
+[ext_resource type="Animation" uid="uid://dvcq0evfxp8a6" path="res://animations/burke_idle_with_bucket.res" id="3_5d51q"]
+[ext_resource type="Animation" uid="uid://c4b3d7r06lqdf" path="res://animations/burke-walk.res" id="4_u0ydf"]
+[ext_resource type="Animation" uid="uid://c0qd1e8m2j5sp" path="res://animations/burke-walk_left.res" id="5_302xk"]
+[ext_resource type="Animation" uid="uid://caljppq7gcn76" path="res://animations/burke-walk_right.res" id="7_bnxfn"]
+[ext_resource type="Animation" uid="uid://bq3yxekomb2kt" path="res://animations/burke-walk_right_with_bucket.res" id="8_t4du3"]
+[ext_resource type="Animation" uid="uid://uvhepp4jxbmv" path="res://animations/burke-walk_with_bucket.res" id="9_tq3j8"]
+[ext_resource type="Script" path="res://characters/krub/AnimationPlayer.gd" id="10_3lb43"]
+[ext_resource type="Texture2D" uid="uid://en8awqpe4oo0" path="res://assets/krub/KrubWalkingRight.png" id="10_le2g2"]
+[ext_resource type="Texture2D" uid="uid://bb3631hk78di8" path="res://assets/krub/KrubIdle.png" id="11_5gfi6"]
+[ext_resource type="PackedScene" uid="uid://k05w3dotqbim" path="res://props/Bucket.tscn" id="13_ldasw"]
+[ext_resource type="Texture2D" uid="uid://d16j8rc2lfbe8" path="res://assets/krub/KrubPatch.png" id="13_t2ovv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3qso"]
+size = Vector2(328, 49.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5kn1"]
+radius = 130.667
+height = 301.333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vdu3"]
+radius = 242.45
+
+[sub_resource type="Animation" id="Animation_2ow45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_5gfi6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BucketPlaceHolder:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BucketPlaceHolder:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-173, -31)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BucketPlaceHolder/Patch:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-37.3333, -158.667)]
+}
+
+[sub_resource type="Animation" id="Animation_kmrbb"]
+resource_name = "walk_left_with_bucket"
+length = 0.45
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_le2g2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BucketPlaceHolder:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-17, 11), Vector2(-21, 18), Vector2(-47, 14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bldg2"]
+_data = {
+"RESET": SubResource("Animation_2ow45"),
+"idle": ExtResource("2_6erfq"),
+"idle_with_bucket": ExtResource("3_5d51q"),
+"walk": ExtResource("4_u0ydf"),
+"walk_left": ExtResource("5_302xk"),
+"walk_left_with_bucket": SubResource("Animation_kmrbb"),
+"walk_right": ExtResource("7_bnxfn"),
+"walk_right_with_bucket": ExtResource("8_t4du3"),
+"walk_with_bucket": ExtResource("9_tq3j8")
+}
+
+[node name="Krub" type="CharacterBody2D" groups=["Krub"]]
+position = Vector2(7, -1)
+collision_layer = 2
+script = ExtResource("1_6dud4")
+
+[node name="Feet" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -32.25)
+shape = SubResource("RectangleShape2D_l3qso")
+
+[node name="CatchWorm" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchWorm"]
+position = Vector2(-13.3333, -166.667)
+shape = SubResource("CapsuleShape2D_o5kn1")
+
+[node name="WormRadar" type="Area2D" parent="."]
+position = Vector2(-18.6667, -168)
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormRadar"]
+position = Vector2(0, 17.3333)
+shape = SubResource("CircleShape2D_0vdu3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bldg2")
+}
+script = ExtResource("10_3lb43")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-30, -122)
+texture = ExtResource("11_5gfi6")
+hframes = 3
+
+[node name="WormCatchTimer" type="Timer" parent="."]
+
+[node name="BucketPlaceHolder" parent="." instance=ExtResource("13_ldasw")]
+visible = false
+position = Vector2(-173, -31)
+
+[node name="Patch" type="Sprite2D" parent="BucketPlaceHolder"]
+position = Vector2(-37.3333, -158.667)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("13_t2ovv")
+
+[connection signal="body_entered" from="CatchWorm" to="." method="_on_catch_worm_body_entered"]
+[connection signal="body_exited" from="CatchWorm" to="." method="_on_catch_worm_body_exited"]
+[connection signal="body_entered" from="WormRadar" to="." method="_on_worm_radar_body_entered"]
+[connection signal="body_exited" from="WormRadar" to="." method="_on_worm_radar_body_exited"]
+[connection signal="timeout" from="WormCatchTimer" to="." method="_on_worm_catch_timer_timeout"]

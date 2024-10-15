@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://025xo2k3qes1"]
+
+[sub_resource type="GDScript" id="GDScript_3lps7"]
+script/source = "extends CanvasLayer
+
+signal start
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_start_button_button_down():
+	start.emit()
+"
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_3lps7")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 1280.0
+offset_top = 770.0
+offset_right = 1463.0
+offset_bottom = 881.0
+theme_override_font_sizes/font_size = 75
+text = "Start"
+
+[connection signal="button_down" from="StartButton" to="." method="_on_start_button_button_down"]

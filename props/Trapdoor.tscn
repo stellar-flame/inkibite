@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://dp06sgd0iw5ne"]
+
+[ext_resource type="Texture2D" uid="uid://db5u2cv2rfthb" path="res://assets/background/Trapdoor.png" id="1_0xtja"]
+[ext_resource type="Script" path="res://props/Trapdoor.gd" id="1_30unx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78kgu"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3vka"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asvq6"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdw5m"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnak4"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wnd2"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh7sx"]
+atlas = ExtResource("1_0xtja")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alm2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78kgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3vka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asvq6")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdw5m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnak4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wnd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh7sx")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkqif"]
+font_size = 26
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqusm"]
+radius = 44.3725
+height = 241.244
+
+[node name="Trapdoor" type="StaticBody2D"]
+script = ExtResource("1_30unx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 187)
+sprite_frames = SubResource("SpriteFrames_alm2p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-171, -7)
+polygon = PackedVector2Array(375, 60, 300, 250, -83, 256, 58, 41)
+
+[node name="DoorHandle" type="Area2D" parent="."]
+position = Vector2(-258, 14)
+collision_mask = 2
+
+[node name="Label" type="Label" parent="DoorHandle"]
+visible = false
+offset_left = 4.0
+offset_top = -41.0
+offset_right = 115.0
+offset_bottom = -2.0
+theme_override_font_sizes/font_size = 20
+text = "Open "
+label_settings = SubResource("LabelSettings_nkqif")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHandle"]
+visibility_layer = 2
+position = Vector2(30, 108)
+skew = 0.593412
+shape = SubResource("CapsuleShape2D_uqusm")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="DoorHandle" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DoorHandle" to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

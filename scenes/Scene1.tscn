@@ -1,0 +1,256 @@
+[gd_scene load_steps=21 format=3 uid="uid://c56r1awkdjp3y"]
+
+[ext_resource type="Script" path="res://scenes/Scene1.gd" id="1_7ulav"]
+[ext_resource type="Texture2D" uid="uid://bw0aup367g1rp" path="res://assets/background/Background3.png" id="1_dtyl6"]
+[ext_resource type="PackedScene" uid="uid://iyr6hrfeko12" path="res://characters/krub/Krub.tscn" id="2_6uqt5"]
+[ext_resource type="PackedScene" uid="uid://b1n016i8hqiim" path="res://scenes/elevator_area.tscn" id="2_ca2ga"]
+[ext_resource type="PackedScene" uid="uid://dp06sgd0iw5ne" path="res://props/Trapdoor.tscn" id="2_eu3t4"]
+[ext_resource type="PackedScene" uid="uid://2aeplxg3urbp" path="res://characters/drutt/Drutt.tscn" id="3_8ugho"]
+[ext_resource type="PackedScene" uid="uid://k05w3dotqbim" path="res://props/Bucket.tscn" id="7_03suc"]
+[ext_resource type="Script" path="res://scenes/Label.gd" id="8_k64gt"]
+[ext_resource type="FontFile" uid="uid://dvqp054clwptr" path="res://assets/fonts/Caveat-VariableFont_wght.ttf" id="8_t7fgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8ui"]
+size = Vector2(3835.75, 47.9331)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfd1o"]
+size = Vector2(20, 426.17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwx6q"]
+size = Vector2(31.4265, 819.247)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f27rk"]
+radius = 177.0
+height = 2038.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1uuy"]
+bg_color = Color(0.6, 0.219608, 0.298039, 0.792157)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.796078, 0.796078, 0.796078, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdthm"]
+bg_color = Color(0.486275, 0.317647, 0.345098, 0.847059)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkahf"]
+bg_color = Color(0.411445, 0.135807, 0.193719, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0.196078, 0.196078, 0.196078, 0.6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pktmi"]
+font = ExtResource("8_t7fgt")
+font_size = 200
+outline_size = 5
+shadow_size = 10
+
+[sub_resource type="Animation" id="Animation_humk0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.298039, 0.298039, 0.298039, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1343, 255)]
+}
+
+[sub_resource type="Animation" id="Animation_ysi5i"]
+resource_name = "start"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.298039, 0.298039, 0.298039, 1), Color(0.580392, 0.580392, 0.580392, 1), Color(0.968627, 0.968627, 0.968627, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vx57i"]
+_data = {
+"RESET": SubResource("Animation_humk0"),
+"start": SubResource("Animation_ysi5i")
+}
+
+[node name="Scene1" type="Node2D"]
+script = ExtResource("1_7ulav")
+
+[node name="ElevatorArea" parent="." instance=ExtResource("2_ca2ga")]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1251, 714)
+scale = Vector2(0.668229, 0.685417)
+texture = ExtResource("1_dtyl6")
+
+[node name="BackWall" type="StaticBody2D" parent="Background"]
+position = Vector2(-1495, 419.088)
+scale = Vector2(1.49649, 1.45897)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/BackWall"]
+position = Vector2(9.00235, 8.99988)
+polygon = PackedVector2Array(-280, -978, -288, 247, -260, 232, -116, 88.7498, -4, -2, 151, -141, 289, -156, 439.001, -280.249, 530.001, -381.249, 818.002, -617.248, 975.002, -610.248, 1395, -565, 1414, -721, 1525, -834, 1612, -861, 1663, -855, 1741, -826, 1818, -750, 1857, -696, 1869, -585, 2288, -584, 2277, -1024, -276, -1026)
+
+[node name="FrontWall" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/FrontWall"]
+position = Vector2(333.718, -252.036)
+polygon = PackedVector2Array(-228.964, -4.37634, -231.957, 88.9969, -234.949, 90.4559, -357.662, 99.2097, -360.655, 194.043, -469.899, 194.043, -469.899, 264.073, -580.639, 287.416, -598.597, 385.167, -697.366, 393.921, -700.359, 477.082, -474.388, 466.869, 101.761, 471.246, 107.747, 266.991, 276.851, 135.684, 369.634, 134.225, 484.864, 202.796, 562.681, 299.088, 567.171, 478.541, 1586.28, 472.705, 1578.8, -5.83588)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(-4.48947, 1056.66)
+shape = SubResource("RectangleShape2D_ka8ui")
+
+[node name="LeftSideWall" type="StaticBody2D" parent="Background"]
+position = Vector2(-1917.01, 734.225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/LeftSideWall"]
+position = Vector2(0, 203.085)
+shape = SubResource("RectangleShape2D_dfd1o")
+
+[node name="RightSideWall" type="StaticBody2D" parent="Background"]
+position = Vector2(1945.44, 360.729)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/RightSideWall"]
+position = Vector2(-44.1465, 257.124)
+shape = SubResource("RectangleShape2D_xwx6q")
+debug_color = Color(0.343449, 0.601425, 0.441505, 0.42)
+
+[node name="Characters" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trapdoor" parent="Characters" instance=ExtResource("2_eu3t4")]
+position = Vector2(1188, 1002)
+
+[node name="Drutt" parent="Characters" instance=ExtResource("3_8ugho")]
+position = Vector2(2257, 1245)
+
+[node name="Worms" type="Node2D" parent="Characters"]
+y_sort_enabled = true
+
+[node name="Krub" parent="Characters" instance=ExtResource("2_6uqt5")]
+position = Vector2(730, 1047)
+
+[node name="Bucket" parent="Characters" groups=["bucket"] instance=ExtResource("7_03suc")]
+position = Vector2(431, 951)
+
+[node name="WormArea" type="Area2D" parent="."]
+position = Vector2(1599, 1173)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormArea"]
+position = Vector2(-197, -35)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f27rk")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StartButton" type="Button" parent="HUD"]
+offset_left = 991.0
+offset_top = 554.0
+offset_right = 1449.0
+offset_bottom = 702.0
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_w1uuy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gdthm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hkahf")
+text = "Start"
+
+[node name="GameMessages" type="Label" parent="."]
+modulate = Color(0.298039, 0.298039, 0.298039, 1)
+offset_left = 175.0
+offset_top = 165.0
+offset_right = 1518.0
+offset_bottom = 420.0
+label_settings = SubResource("LabelSettings_pktmi")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_k64gt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameMessages"]
+libraries = {
+"": SubResource("AnimationLibrary_vx57i")
+}
+
+[node name="Timer" type="Timer" parent="GameMessages"]
+
+[connection signal="child_entered_tree" from="ElevatorArea" to="ElevatorArea" method="_on_child_entered_tree"]
+[connection signal="monster_fed" from="ElevatorArea" to="." method="_on_elevator_area_monster_fed"]
+[connection signal="trapdoor_opened" from="Characters/Trapdoor" to="." method="_on_trapdoor_trapdoor_opened"]
+[connection signal="drutt_ate_worm" from="Characters/Drutt" to="." method="_on_drutt_drutt_ate_worm"]
+[connection signal="feed_monster" from="Characters/Krub" to="." method="_on_krub_feed_monster"]
+[connection signal="open_trapdoor" from="Characters/Krub" to="Characters/Trapdoor" method="_on_krub_open_trapdoor"]
+[connection signal="pickup_bucket" from="Characters/Krub" to="Characters/Bucket" method="_on_krub_pickup_bucket"]
+[connection signal="released_bucket" from="Characters/Krub" to="." method="_on_krub_released_bucket"]
+[connection signal="worm_caught" from="Characters/Krub" to="." method="_on_krub_worm_caught"]
+[connection signal="bucket_picked_up" from="Characters/Bucket" to="." method="_on_bucket_bucket_picked_up"]
+[connection signal="body_entered" from="WormArea" to="." method="_on_worm_area_body_entered"]
+[connection signal="body_exited" from="WormArea" to="." method="_on_worm_area_body_exited"]
+[connection signal="button_down" from="HUD/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="HUD/StartButton" to="HUD" method="_on_start_button_button_down" flags=18]
+[connection signal="animation_finished" from="GameMessages/AnimationPlayer" to="GameMessages" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="GameMessages/Timer" to="GameMessages" method="_on_timer_timeout"]

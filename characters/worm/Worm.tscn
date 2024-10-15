@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3ngjext5na4a"]
+
+[ext_resource type="Script" path="res://characters/worm/Worm.gd" id="1_dkkvq"]
+[ext_resource type="Shader" path="res://characters/worm/Worm.gdshader" id="1_u5oko"]
+[ext_resource type="Texture2D" uid="uid://g6t7ylp7e1as" path="res://assets/worm/Worm.png" id="2_fxbqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0of5h"]
+size = Vector2(128, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfkws"]
+shader = ExtResource("1_u5oko")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/eye_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8flvp"]
+atlas = ExtResource("2_fxbqf")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctefj"]
+atlas = ExtResource("2_fxbqf")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paqpt"]
+atlas = ExtResource("2_fxbqf")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4b5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8flvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctefj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paqpt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5uusx"]
+radius = 85.3333
+height = 256.0
+
+[node name="Worm" type="CharacterBody2D" groups=["worm"]]
+scale = Vector2(0.75, 0.75)
+collision_layer = 4
+script = ExtResource("1_dkkvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.66667, -29.3333)
+shape = SubResource("RectangleShape2D_0of5h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dfkws")
+position = Vector2(10.6667, -22.6667)
+sprite_frames = SubResource("SpriteFrames_h4b5b")
+frame_progress = 0.0690792
+
+[node name="PersonalSpace" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PersonalSpace"]
+position = Vector2(0, -40)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5uusx")
+
+[connection signal="body_entered" from="PersonalSpace" to="." method="_on_personal_space_body_entered"]
+[connection signal="body_exited" from="PersonalSpace" to="." method="_on_personal_space_body_exited"]
