@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c56r1awkdjp3y"]
+[gd_scene load_steps=22 format=3 uid="uid://c56r1awkdjp3y"]
 
 [ext_resource type="Script" path="res://scenes/Scene1.gd" id="1_7ulav"]
 [ext_resource type="Texture2D" uid="uid://bw0aup367g1rp" path="res://assets/background/Background3.png" id="1_dtyl6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n016i8hqiim" path="res://scenes/elevator_area.tscn" id="2_ca2ga"]
 [ext_resource type="PackedScene" uid="uid://dp06sgd0iw5ne" path="res://props/Trapdoor.tscn" id="2_eu3t4"]
 [ext_resource type="PackedScene" uid="uid://2aeplxg3urbp" path="res://characters/drutt/Drutt.tscn" id="3_8ugho"]
+[ext_resource type="PackedScene" uid="uid://dx4ll4yeotfqx" path="res://characters/cheeto/Cheeto.tscn" id="4_njt6d"]
 [ext_resource type="PackedScene" uid="uid://k05w3dotqbim" path="res://props/Bucket.tscn" id="7_03suc"]
 [ext_resource type="Script" path="res://scenes/Label.gd" id="8_k64gt"]
 [ext_resource type="FontFile" uid="uid://dvqp054clwptr" path="res://assets/fonts/Caveat-VariableFont_wght.ttf" id="8_t7fgt"]
@@ -182,6 +183,10 @@ debug_color = Color(0.343449, 0.601425, 0.441505, 0.42)
 
 [node name="Characters" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Cheeto" parent="Characters" instance=ExtResource("4_njt6d")]
+position = Vector2(1701, 867)
+scale = Vector2(0.75, 0.75)
 
 [node name="Trapdoor" parent="Characters" instance=ExtResource("2_eu3t4")]
 position = Vector2(1188, 1002)

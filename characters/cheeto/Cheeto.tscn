@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx4ll4yeotfqx"]
+
+[ext_resource type="Texture2D" uid="uid://dh6mkyxncmb4c" path="res://assets/cheeto/Cat.png" id="1_6b7k1"]
+[ext_resource type="FontFile" uid="uid://dvqp054clwptr" path="res://assets/fonts/Caveat-VariableFont_wght.ttf" id="2_fsv8s"]
+[ext_resource type="Script" path="res://characters/cheeto/Sleepy.gd" id="2_ko42b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6ntq"]
+radius = 68.0
+height = 308.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oowr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6b7k1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cheeto" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u6ntq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oowr2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -74.0
+offset_top = -197.0
+offset_right = 131.0
+offset_bottom = -131.0
+rotation = -0.523599
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_fsv8s")
+script = ExtResource("2_ko42b")
