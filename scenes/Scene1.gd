@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var characters = $Characters
 @onready var krub: Krub = $Characters/Krub
-@onready var drutt: Drutt = $Characters/Drutt
+@onready var buzzles: Buzzles = $Characters/Buzzles
 @onready var trapdoor = $Characters/Trapdoor
 @onready var worms = $Characters/Worms
 @onready var elevator_area : Area2D= $ElevatorArea
@@ -11,7 +11,7 @@ var WormScene = load("res://characters/worm/Worm.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	drutt.worms = worms
+	buzzles.worms = worms
 	$HUD/StartButton.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
 	
@@ -49,12 +49,7 @@ func _on_worm_area_body_exited(body):
 func _on_worm_area_body_entered(body):
 	if body.is_in_group("worm"):
 		body.choose_random_direction()
-
-func _on_drutt_drutt_ate_worm(worm: Worm):
-	remove_worm(worm)
-	worm.queue_free()
-	
-	
+		
 	
 func _on_elevator_area_monster_fed(bucket):
 	characters.remove_child(bucket)
@@ -75,8 +70,8 @@ func _on_krub_worm_caught(worm):
 	remove_worm(worm)
 
 func remove_worm(worm):
-	if drutt.target_worm == worm:
-		drutt.target_worm = null
+	if buzzles.target_worm == worm:
+		buzzles.target_worm = null
 	worms.remove_child(worm)
 
 
@@ -98,3 +93,7 @@ func _on_bucket_bucket_picked_up(bucket):
 func _on_krub_feed_monster():
 	elevator_area.show_label(true, "Place Bucket Here")
 
+
+func _on_buzzles_ate_worm(worm):
+	remove_worm(worm)
+	worm.queue_free()

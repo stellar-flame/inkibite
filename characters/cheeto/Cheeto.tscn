@@ -1,12 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx4ll4yeotfqx"]
+[gd_scene load_steps=10 format=3 uid="uid://dx4ll4yeotfqx"]
 
 [ext_resource type="Texture2D" uid="uid://dh6mkyxncmb4c" path="res://assets/cheeto/Cat.png" id="1_6b7k1"]
+[ext_resource type="Texture2D" uid="uid://cajby3272vu3u" path="res://assets/cheeto/CatPlunging.png" id="2_503tl"]
 [ext_resource type="FontFile" uid="uid://dvqp054clwptr" path="res://assets/fonts/Caveat-VariableFont_wght.ttf" id="2_fsv8s"]
 [ext_resource type="Script" path="res://characters/cheeto/Sleepy.gd" id="2_ko42b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6ntq"]
 radius = 68.0
 height = 308.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceg8b"]
+atlas = ExtResource("2_503tl")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwppq"]
+atlas = ExtResource("2_503tl")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo8fo"]
+atlas = ExtResource("2_503tl")
+region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oowr2"]
 animations = [{
@@ -16,6 +29,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceg8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwppq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo8fo")
+}],
+"loop": true,
+"name": &"plunging",
 "speed": 5.0
 }]
 
@@ -27,6 +54,8 @@ shape = SubResource("CapsuleShape2D_u6ntq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oowr2")
+animation = &"plunging"
+frame_progress = 0.698051
 
 [node name="Label" type="Label" parent="."]
 offset_left = -74.0

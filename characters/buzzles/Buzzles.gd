@@ -1,8 +1,8 @@
-class_name Drutt
+class_name Buzzles
 
 extends CharacterBody2D
 
-signal drutt_ate_worm(worm)
+signal buzzles_ate_worm(worm)
 
 @onready var sprite = $AnimatedSprite2D
 @onready var worm_eating_timer = $WormEatingTimer
@@ -128,7 +128,7 @@ func eat_or_chase(worm):
 		worm.accelerate()
 	else:
 		burping = true
-		emit_signal("drutt_ate_worm", worm)
+		emit_signal("buzzles_ate_worm", worm)
 		worm_eating_timer.start(1)	
 
 func _on_animated_sprite_2d_animation_finished():

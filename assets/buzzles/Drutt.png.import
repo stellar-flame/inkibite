@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d04avmcyejphf"
-path="res://.godot/imported/DruttBurp.png-8b7c473a9dc38a17bce22cf09a4a41e2.ctex"
+uid="uid://dowm3tsiweig4"
+path="res://.godot/imported/Drutt.png-a1834a7deb2871453f92f2593f96320d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drutt/DruttBurp.png"
-dest_files=["res://.godot/imported/DruttBurp.png-8b7c473a9dc38a17bce22cf09a4a41e2.ctex"]
+source_file="res://assets/buzzles/Drutt.png"
+dest_files=["res://.godot/imported/Drutt.png-a1834a7deb2871453f92f2593f96320d.ctex"]
 
 [params]
 

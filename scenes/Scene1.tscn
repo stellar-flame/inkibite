@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://iyr6hrfeko12" path="res://characters/krub/Krub.tscn" id="2_6uqt5"]
 [ext_resource type="PackedScene" uid="uid://b1n016i8hqiim" path="res://scenes/elevator_area.tscn" id="2_ca2ga"]
 [ext_resource type="PackedScene" uid="uid://dp06sgd0iw5ne" path="res://props/Trapdoor.tscn" id="2_eu3t4"]
-[ext_resource type="PackedScene" uid="uid://2aeplxg3urbp" path="res://characters/drutt/Drutt.tscn" id="3_8ugho"]
+[ext_resource type="PackedScene" uid="uid://2aeplxg3urbp" path="res://characters/buzzles/Buzzles.tscn" id="3_8ugho"]
 [ext_resource type="PackedScene" uid="uid://dx4ll4yeotfqx" path="res://characters/cheeto/Cheeto.tscn" id="4_njt6d"]
 [ext_resource type="PackedScene" uid="uid://k05w3dotqbim" path="res://props/Bucket.tscn" id="7_03suc"]
 [ext_resource type="Script" path="res://scenes/Label.gd" id="8_k64gt"]
@@ -191,7 +191,7 @@ scale = Vector2(0.75, 0.75)
 [node name="Trapdoor" parent="Characters" instance=ExtResource("2_eu3t4")]
 position = Vector2(1188, 1002)
 
-[node name="Drutt" parent="Characters" instance=ExtResource("3_8ugho")]
+[node name="Buzzles" parent="Characters" instance=ExtResource("3_8ugho")]
 position = Vector2(2257, 1245)
 
 [node name="Worms" type="Node2D" parent="Characters"]
@@ -246,7 +246,7 @@ libraries = {
 [connection signal="child_entered_tree" from="ElevatorArea" to="ElevatorArea" method="_on_child_entered_tree"]
 [connection signal="monster_fed" from="ElevatorArea" to="." method="_on_elevator_area_monster_fed"]
 [connection signal="trapdoor_opened" from="Characters/Trapdoor" to="." method="_on_trapdoor_trapdoor_opened"]
-[connection signal="drutt_ate_worm" from="Characters/Drutt" to="." method="_on_drutt_drutt_ate_worm"]
+[connection signal="buzzles_ate_worm" from="Characters/Buzzles" to="." method="_on_buzzles_ate_worm"]
 [connection signal="feed_monster" from="Characters/Krub" to="." method="_on_krub_feed_monster"]
 [connection signal="open_trapdoor" from="Characters/Krub" to="Characters/Trapdoor" method="_on_krub_open_trapdoor"]
 [connection signal="pickup_bucket" from="Characters/Krub" to="Characters/Bucket" method="_on_krub_pickup_bucket"]
