@@ -73,9 +73,9 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_nkqif"]
 font_size = 26
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqusm"]
-radius = 44.3725
-height = 241.244
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fr3a"]
+radius = 46.0
+height = 374.0
 
 [node name="Trapdoor" type="StaticBody2D"]
 script = ExtResource("1_30unx")
@@ -105,10 +105,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHandle"]
-visibility_layer = 2
-position = Vector2(30, 108)
-skew = 0.593412
-shape = SubResource("CapsuleShape2D_uqusm")
+position = Vector2(5, 102)
+rotation = -2.5412
+shape = SubResource("CapsuleShape2D_6fr3a")
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -14,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://k05w3dotqbim" path="res://props/Bucket.tscn" id="13_ldasw"]
 [ext_resource type="Texture2D" uid="uid://d16j8rc2lfbe8" path="res://assets/krub/KrubPatch.png" id="13_t2ovv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3qso"]
-size = Vector2(328, 49.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdjoj"]
+size = Vector2(305, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5kn1"]
 radius = 130.667
@@ -195,9 +195,9 @@ position = Vector2(7, -1)
 collision_layer = 2
 script = ExtResource("1_6dud4")
 
-[node name="Feet" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -32.25)
-shape = SubResource("RectangleShape2D_l3qso")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-21.5, -16)
+shape = SubResource("RectangleShape2D_pdjoj")
 
 [node name="CatchWorm" type="Area2D" parent="."]
 collision_mask = 4

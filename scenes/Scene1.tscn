@@ -198,7 +198,7 @@ position = Vector2(2257, 1245)
 y_sort_enabled = true
 
 [node name="Krub" parent="Characters" instance=ExtResource("2_6uqt5")]
-position = Vector2(730, 1047)
+position = Vector2(826, 899)
 
 [node name="Bucket" parent="Characters" groups=["bucket"] instance=ExtResource("7_03suc")]
 position = Vector2(431, 951)

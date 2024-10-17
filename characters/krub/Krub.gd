@@ -49,7 +49,10 @@ func animate(animation):
 
 func release_bucket():
 	emit_signal("released_bucket", bucket)
-	current_state = State.IDLE    
+	if bucket.overlaps_body(self):
+		current_state = State.NEAR_BUCKET
+	else:
+		current_state = State.IDLE    
 	bucket = null 
 	
 	

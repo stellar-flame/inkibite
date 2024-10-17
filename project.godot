@@ -66,8 +66,8 @@ interact={
 
 2d_render/layer_2="Prop"
 2d_physics/layer_1="Environment"
-2d_physics/layer_2="Burke Feet"
+2d_physics/layer_2="Krub Feet"
 2d_physics/layer_3="Worms"
-2d_physics/layer_4="Drutt"
-2d_physics/layer_5="Burke's Worm Radar"
+2d_physics/layer_4="Buzzles"
+2d_physics/layer_5="Krub's Worm Radar"
 2d_physics/layer_6="Cheeto"

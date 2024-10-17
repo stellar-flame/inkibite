@@ -8,23 +8,11 @@ extends Area2D
 var worms: Array
 signal bucket_picked_up(bucket)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Worms/Label.text = str(worms.size()) + "/10"
 
-	
-func _on_body_entered(body):
-	if body.is_in_group("Krub"):
-		var krub: Krub= body
-		message.text = "Pick Up"
-		message.show()
-		krub.set_near_bucket(true)
-		
-		
+			
 func _on_body_exited(body):
 	if body.is_in_group("Krub"):
 		message.hide()
@@ -50,3 +38,11 @@ func _on_krub_pickup_bucket(krub):
 	krub.set_bucket(self)
 	emit_signal("bucket_picked_up", self)
 
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Krub"):
+		var krub: Krub= body
+		message.text = "Pick Up"
+		message.show()
+		krub.set_near_bucket(true)
