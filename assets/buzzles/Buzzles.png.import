@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dowm3tsiweig4"
-path="res://.godot/imported/Drutt.png-a1834a7deb2871453f92f2593f96320d.ctex"
+path="res://.godot/imported/Buzzles.png-b09f9984bb9a0e915b4b25ce57500d63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buzzles/Drutt.png"
-dest_files=["res://.godot/imported/Drutt.png-a1834a7deb2871453f92f2593f96320d.ctex"]
+source_file="res://assets/buzzles/Buzzles.png"
+dest_files=["res://.godot/imported/Buzzles.png-b09f9984bb9a0e915b4b25ce57500d63.ctex"]
 
 [params]
 

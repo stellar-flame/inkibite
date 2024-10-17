@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d04avmcyejphf"
-path="res://.godot/imported/DruttBurp.png-643f0218a22b316f40489ba6cdd0d511.ctex"
+path="res://.godot/imported/BuzzlesBurp.png-af8a38faae98ed7e4613dda0ed5753d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buzzles/DruttBurp.png"
-dest_files=["res://.godot/imported/DruttBurp.png-643f0218a22b316f40489ba6cdd0d511.ctex"]
+source_file="res://assets/buzzles/BuzzlesBurp.png"
+dest_files=["res://.godot/imported/BuzzlesBurp.png-af8a38faae98ed7e4613dda0ed5753d0.ctex"]
 
 [params]
 
