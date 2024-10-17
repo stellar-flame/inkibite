@@ -97,3 +97,8 @@ func _on_krub_feed_monster():
 func _on_buzzles_ate_worm(worm):
 	remove_worm(worm)
 	worm.queue_free()
+
+
+func _on_cheeto_cheeto_ate_worm(worm):
+	remove_worm(worm)
+	worm.queue_free()

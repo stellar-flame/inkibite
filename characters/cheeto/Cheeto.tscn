@@ -1,17 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx4ll4yeotfqx"]
+[gd_scene load_steps=15 format=3 uid="uid://dx4ll4yeotfqx"]
 
 [ext_resource type="Texture2D" uid="uid://dh6mkyxncmb4c" path="res://assets/cheeto/Cat.png" id="1_6b7k1"]
+[ext_resource type="Script" path="res://characters/cheeto/Cheeto.gd" id="1_khihd"]
 [ext_resource type="Texture2D" uid="uid://cajby3272vu3u" path="res://assets/cheeto/CatPlunging.png" id="2_503tl"]
 [ext_resource type="FontFile" uid="uid://dvqp054clwptr" path="res://assets/fonts/Caveat-VariableFont_wght.ttf" id="2_fsv8s"]
 [ext_resource type="Script" path="res://characters/cheeto/Sleepy.gd" id="2_ko42b"]
+[ext_resource type="Texture2D" uid="uid://bsva705g7jxel" path="res://assets/cheeto/CatWatching.png" id="4_5dpxh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6ntq"]
 radius = 68.0
 height = 308.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ceg8b"]
-atlas = ExtResource("2_503tl")
-region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwppq"]
 atlas = ExtResource("2_503tl")
@@ -19,6 +17,18 @@ region = Rect2(512, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo8fo"]
 atlas = ExtResource("2_503tl")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc00g"]
+atlas = ExtResource("4_5dpxh")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6idod"]
+atlas = ExtResource("4_5dpxh")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgufd"]
+atlas = ExtResource("4_5dpxh")
 region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oowr2"]
@@ -33,20 +43,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ceg8b")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_rwppq")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fo8fo")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_tc00g")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_6idod")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_wgufd")
 }],
-"loop": true,
+"loop": false,
 "name": &"plunging",
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hhjm"]
+radius = 118.0
+height = 236.0
+
 [node name="Cheeto" type="CharacterBody2D"]
+script = ExtResource("1_khihd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -55,7 +76,8 @@ shape = SubResource("CapsuleShape2D_u6ntq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oowr2")
 animation = &"plunging"
-frame_progress = 0.698051
+frame = 4
+frame_progress = 1.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = -74.0
@@ -66,3 +88,19 @@ rotation = -0.523599
 scale = Vector2(2, 2)
 theme_override_fonts/font = ExtResource("2_fsv8s")
 script = ExtResource("2_ko42b")
+
+[node name="WormRadar" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormRadar"]
+position = Vector2(-89, 84)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1hhjm")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="WormRadar" to="." method="_on_worm_radar_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

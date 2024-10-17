@@ -245,6 +245,7 @@ libraries = {
 
 [connection signal="child_entered_tree" from="ElevatorArea" to="ElevatorArea" method="_on_child_entered_tree"]
 [connection signal="monster_fed" from="ElevatorArea" to="." method="_on_elevator_area_monster_fed"]
+[connection signal="cheeto_ate_worm" from="Characters/Cheeto" to="." method="_on_cheeto_cheeto_ate_worm"]
 [connection signal="trapdoor_opened" from="Characters/Trapdoor" to="." method="_on_trapdoor_trapdoor_opened"]
 [connection signal="buzzles_ate_worm" from="Characters/Buzzles" to="." method="_on_buzzles_ate_worm"]
 [connection signal="feed_monster" from="Characters/Krub" to="." method="_on_krub_feed_monster"]
